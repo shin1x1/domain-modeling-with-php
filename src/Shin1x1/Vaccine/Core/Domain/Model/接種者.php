@@ -28,7 +28,7 @@ final class 接種者
         }
     }
 
-    public function 予約登録(予約 $reservation): self
+    public function 予約登録(予約 $予約): self
     {
         if ($this->接種ステータス !== 接種ステータス::未予約) {
             throw new InvalidOperationException('現在のステータスで予約できません');
@@ -37,7 +37,7 @@ final class 接種者
         return new self(
             $this->id,
             接種ステータス::予約完了,
-            $reservation,
+            $予約,
         );
     }
 
@@ -53,7 +53,7 @@ final class 接種者
         );
     }
 
-    public function 接種登録(接種 $vaccination): self
+    public function 接種登録(接種 $接種): self
     {
         if ($this->接種ステータス !== 接種ステータス::予約完了) {
             throw new InvalidOperationException('現在のステータスで接種できません');
@@ -63,7 +63,7 @@ final class 接種者
             $this->id,
             接種ステータス::接種完了,
             $this->予約,
-            $vaccination,
+            $接種,
         );
     }
 }
