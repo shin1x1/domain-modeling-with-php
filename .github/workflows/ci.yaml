@@ -12,3 +12,12 @@ jobs:
         run: make install
       - name: Run phpunit
         run: make test
+
+  phpunit_en:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup
+        run: cd en && make install
+      - name: Run phpunit
+        run: cd en && make test

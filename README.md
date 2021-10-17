@@ -1,3 +1,5 @@
+English version: ./en/readme.md
+
 # 「ドメインをモデリングしてPHPコードに落とし込む」サンプルコード
 
 * 発表資料: https://speakerdeck.com/shin1x1/domain-modeling-with-php8
