@@ -35,7 +35,7 @@ final class VaccinationUseCase
             throw new PreconditionException('Recipient not found');
         }
 
-        $recipient = $recipient->vaccine(new Vaccination($no));
+        $recipient = $recipient->vaccinate(new Vaccination($no));
 
         $this->command->store($recipient);
     }

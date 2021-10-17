@@ -54,7 +54,7 @@ final class Recipient
         );
     }
 
-    public function vaccine(Vaccination $vaccination): self
+    public function vaccinate(Vaccination $vaccination): self
     {
         if ($this->vaccinationStatus !== VaccinationStatus::Reserved) {
             throw new InvalidOperationException('Could not vaccaine in your status');

@@ -82,13 +82,13 @@ final class RecipientTest extends TestCase
     /**
      * @test
      */
-    public function vaccine()
+    public function vaccinate()
     {
         $reservation = new Reservation(new ReservedDate(Date::createFromString('2021-09-19')));
         $vaccination = new Vaccination(new VaccineLotNo('A12345'));
 
         $sut = new Recipient(new RecipientId(), VaccinationStatus::Reserved, reservation: $reservation);
-        $actual = $sut->vaccine($vaccination);
+        $actual = $sut->vaccinate($vaccination);
 
         $expected = new Recipient(new RecipientId(), VaccinationStatus::Vaccinated, reservation: $reservation, vaccination: $vaccination);
         $this->assertEquals($expected, $actual);
