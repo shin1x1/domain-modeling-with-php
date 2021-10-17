@@ -1,4 +1,4 @@
-English version: ./en/readme.md
+English version: https://github.com/shin1x1/domain-modeling-with-php/blob/main/en/
 
 # 「ドメインをモデリングしてPHPコードに落とし込む」サンプルコード
 
