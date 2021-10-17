@@ -6,16 +6,16 @@ namespace Shin1x1\Vaccine\Core\Test\Domain\Model;
 
 use PHPUnit\Framework\TestCase;
 use Shin1x1\Vaccine\Core\Domain\Exception\InvariantException;
-use Shin1x1\Vaccine\Core\Domain\Model\VaccinationTiketCode;
+use Shin1x1\Vaccine\Core\Domain\Model\VaccinationTicketNo;
 
-final class VaccinationCodeTest extends TestCase
+final class VaccinationTicketCodeTest extends TestCase
 {
     /**
      * @test
      */
     public function construct_(): void
     {
-        $actual = new VaccinationTiketCode('1234567890');
+        $actual = new VaccinationTicketNo('1234567890');
 
         $this->assertSame('1234567890', $actual->toString());
     }
@@ -27,7 +27,7 @@ final class VaccinationCodeTest extends TestCase
     {
         $this->expectException(InvariantException::class);
 
-        new VaccinationTiketCode('A234567890');
+        new VaccinationTicketNo('A234567890');
     }
 }
 

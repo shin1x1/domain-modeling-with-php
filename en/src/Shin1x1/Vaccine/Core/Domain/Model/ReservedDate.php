@@ -7,7 +7,7 @@ namespace Shin1x1\Vaccine\Core\Domain\Model;
 use Shin1x1\Vaccine\Core\Domain\Exception\PreconditionException;
 use Shin1x1\Vaccine\Core\Subdomain\Model\Date;
 
-final class VaccineDate
+final class ReservedDate
 {
     public function __construct(private Date $date)
     {

@@ -6,7 +6,7 @@ namespace Shin1x1\Vaccine\Core\Domain\Model;
 
 use Shin1x1\Vaccine\Core\Domain\Exception\InvariantException;
 
-final class VaccinationTiketCode
+final class VaccinationTicketNo
 {
     public function __construct(private string $code)
     {

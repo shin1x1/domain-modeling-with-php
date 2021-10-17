@@ -6,17 +6,17 @@ namespace Shin1x1\Vaccine\Core\Test\Domain\Model;
 
 use PHPUnit\Framework\TestCase;
 use Shin1x1\Vaccine\Core\Domain\Exception\PreconditionException;
-use Shin1x1\Vaccine\Core\Domain\Model\VaccineDate;
+use Shin1x1\Vaccine\Core\Domain\Model\ReservedDate;
 use Shin1x1\Vaccine\Core\Subdomain\Model\Date;
 
-final class VaccinationDateTest extends TestCase
+final class ReservedDateTest extends TestCase
 {
     /**
      * @test
      */
     public function createFromString(): void
     {
-        $actual = VaccineDate::createFromString('2021-09-29', Date::createFromString('2021-09-22'));
+        $actual = ReservedDate::createFromString('2021-09-29', Date::createFromString('2021-09-22'));
 
         $this->assertSame('2021-09-29', $actual->toDateString());
     }
@@ -28,7 +28,7 @@ final class VaccinationDateTest extends TestCase
     {
         $this->expectException(PreconditionException::class);
 
-        VaccineDate::createFromString(
+        ReservedDate::createFromString(
             '2021-09-28',
             Date::createFromString('2021-09-22')
         );
@@ -42,7 +42,7 @@ final class VaccinationDateTest extends TestCase
     {
         $this->expectException(PreconditionException::class);
 
-        VaccineDate::createFromString($dateString, Date::createFromString('2021-09-22'));
+        ReservedDate::createFromString($dateString, Date::createFromString('2021-09-22'));
     }
 
     /**

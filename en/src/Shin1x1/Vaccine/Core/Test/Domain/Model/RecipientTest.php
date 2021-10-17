@@ -11,7 +11,7 @@ use Shin1x1\Vaccine\Core\Domain\Model\RecipientId;
 use Shin1x1\Vaccine\Core\Domain\Model\Reservation;
 use Shin1x1\Vaccine\Core\Domain\Model\Vaccination;
 use Shin1x1\Vaccine\Core\Domain\Model\VaccinationStatus;
-use Shin1x1\Vaccine\Core\Domain\Model\VaccineDate;
+use Shin1x1\Vaccine\Core\Domain\Model\ReservedDate;
 use Shin1x1\Vaccine\Core\Domain\Model\VaccineLotNo;
 use Shin1x1\Vaccine\Core\Subdomain\Model\Date;
 
@@ -34,7 +34,7 @@ final class RecipientTest extends TestCase
     public function reserve()
     {
         $sut = new Recipient(new RecipientId());
-        $reservation = new Reservation(new VaccineDate(Date::createFromString('2021-09-19')));
+        $reservation = new Reservation(new ReservedDate(Date::createFromString('2021-09-19')));
         $actual = $sut->reserve($reservation);
 
         $expected = new Recipient(new RecipientId(), VaccinationStatus::Reserved, reservation: $reservation, vaccination: null);
@@ -48,7 +48,7 @@ final class RecipientTest extends TestCase
     {
         $this->expectException(InvalidOperationException::class);
 
-        $reservation = new Reservation(new VaccineDate(Date::createFromString('2021-09-19')));
+        $reservation = new Reservation(new ReservedDate(Date::createFromString('2021-09-19')));
         $sut = new Recipient(new RecipientId(), VaccinationStatus::Reserved, reservation: $reservation, vaccination: null);
         $sut->reserve($reservation);
     }
@@ -60,7 +60,7 @@ final class RecipientTest extends TestCase
     {
         $this->expectException(InvalidOperationException::class);
 
-        $reservation = new Reservation(new VaccineDate(Date::createFromString('2021-09-19')));
+        $reservation = new Reservation(new ReservedDate(Date::createFromString('2021-09-19')));
         $vaccination = new Vaccination(new VaccineLotNo('A12345'));
         $sut = new Recipient(new RecipientId(), VaccinationStatus::Vaccinated, reservation: $reservation, vaccination: $vaccination);
         $sut->reserve($reservation);
@@ -71,7 +71,7 @@ final class RecipientTest extends TestCase
      */
     public function cancel()
     {
-        $reservation = new Reservation(new VaccineDate(Date::createFromString('2021-09-19')));
+        $reservation = new Reservation(new ReservedDate(Date::createFromString('2021-09-19')));
         $sut = new Recipient(new RecipientId(), VaccinationStatus::Reserved, reservation: $reservation);
         $actual = $sut->cancel();
 
@@ -84,7 +84,7 @@ final class RecipientTest extends TestCase
      */
     public function vaccine()
     {
-        $reservation = new Reservation(new VaccineDate(Date::createFromString('2021-09-19')));
+        $reservation = new Reservation(new ReservedDate(Date::createFromString('2021-09-19')));
         $vaccination = new Vaccination(new VaccineLotNo('A12345'));
 
         $sut = new Recipient(new RecipientId(), VaccinationStatus::Reserved, reservation: $reservation);

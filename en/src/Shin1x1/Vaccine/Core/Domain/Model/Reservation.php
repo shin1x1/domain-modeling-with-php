@@ -7,7 +7,7 @@ namespace Shin1x1\Vaccine\Core\Domain\Model;
 final class Reservation
 {
     public function __construct(
-        private VaccineDate $vaccineDate,
+        private ReservedDate $vaccineDate,
     )
     {
     }

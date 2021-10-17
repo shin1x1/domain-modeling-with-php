@@ -6,13 +6,13 @@ namespace Shin1x1\Vaccine\Core\Test\UseCase;
 
 use PHPUnit\Framework\TestCase;
 use Shin1x1\Vaccine\Core\Domain\Exception\PreconditionException;
-use Shin1x1\Vaccine\Core\Domain\Model\MunicipalityNumber;
+use Shin1x1\Vaccine\Core\Domain\Model\MunicipalityNo;
 use Shin1x1\Vaccine\Core\Domain\Model\Recipient;
 use Shin1x1\Vaccine\Core\Domain\Model\RecipientId;
 use Shin1x1\Vaccine\Core\Domain\Model\Reservation;
 use Shin1x1\Vaccine\Core\Domain\Model\VaccinationStatus;
-use Shin1x1\Vaccine\Core\Domain\Model\VaccinationTiketCode;
-use Shin1x1\Vaccine\Core\Domain\Model\VaccineDate;
+use Shin1x1\Vaccine\Core\Domain\Model\VaccinationTicketNo;
+use Shin1x1\Vaccine\Core\Domain\Model\ReservedDate;
 use Shin1x1\Vaccine\Core\Domain\Port\RecipientCommand;
 use Shin1x1\Vaccine\Core\Domain\Port\RecipientQuery;
 use Shin1x1\Vaccine\Core\Subdomain\Model\Date;
@@ -37,8 +37,8 @@ final class ReservationUseCaseTest extends TestCase
         $sut = new ReservationUseCase(
             new class implements RecipientQuery {
                 public function findByVaccinationTicketCodeAndMunicipalityNumber(
-                    VaccinationTiketCode $vaccinationTiketCode,
-                    MunicipalityNumber   $municipalityNumber,
+                    VaccinationTicketNo $vaccinationTiketCode,
+                    MunicipalityNo      $municipalityNumber,
                 ): ?Recipient
                 {
                     return new Recipient(new RecipientId(1));
@@ -47,10 +47,10 @@ final class ReservationUseCaseTest extends TestCase
             $command,
         );
 
-        $date = new VaccineDate(Date::createFromString('2021-09-27'));
+        $date = new ReservedDate(Date::createFromString('2021-09-27'));
         $sut->run(
-            new VaccinationTiketCode('1234567890'),
-            new MunicipalityNumber('123456'),
+            new VaccinationTicketNo('1234567890'),
+            new MunicipalityNo('123456'),
             $date,
         );
 
@@ -73,8 +73,8 @@ final class ReservationUseCaseTest extends TestCase
         $sut = new ReservationUseCase(
             new class implements RecipientQuery {
                 public function findByVaccinationTicketCodeAndMunicipalityNumber(
-                    VaccinationTiketCode $vaccinationTiketCode,
-                    MunicipalityNumber   $municipalityNumber,
+                    VaccinationTicketNo $vaccinationTiketCode,
+                    MunicipalityNo      $municipalityNumber,
                 ): ?Recipient
                 {
                     return null;
@@ -89,9 +89,9 @@ final class ReservationUseCaseTest extends TestCase
         );
 
         $sut->run(
-            new VaccinationTiketCode('1234567890'),
-            new MunicipalityNumber('123456'),
-            new VaccineDate(Date::createFromString('2021-09-27')),
+            new VaccinationTicketNo('1234567890'),
+            new MunicipalityNo('123456'),
+            new ReservedDate(Date::createFromString('2021-09-27')),
         );
     }
 }
