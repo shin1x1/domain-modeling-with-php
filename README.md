@@ -1,3 +1,5 @@
+English version: https://github.com/shin1x1/domain-modeling-with-php/blob/main/en/
+
 # 「ドメインをモデリングしてPHPコードに落とし込む」サンプルコード
 
 * 発表資料: https://speakerdeck.com/shin1x1/domain-modeling-with-php8
